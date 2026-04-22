@@ -9,8 +9,8 @@ export function Home() {
         <div style={{ maxWidth: '700px' }}>
           <p
             style={{
-              fontSize: '15px',
-              fontWeight: 600,
+              fontSize: '40px',
+              fontWeight: 800,
               color: 'var(--accent)',
               marginBottom: '16px',
               textTransform: 'uppercase',
