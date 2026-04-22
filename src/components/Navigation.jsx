@@ -17,181 +17,212 @@ export function Navigation() {
   const isActive = path => location.pathname === path;
 
   return (
-    <nav
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        backgroundColor: 'rgba(255, 255, 255, 0.98)',
-        borderBottom: '1px solid var(--border)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
-        transition: 'all 0.3s ease',
-      }}
-    >
-      <div
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .nav-desktop {
+            display: none !important;
+          }
+          .nav-padding {
+            padding: 0 20px !important;
+          }
+          .nav-maxwidth {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+        }
+        @media (min-width: 769px) {
+          .mobile-menu-btn {
+            display: none !important;
+          }
+          .nav-mobile {
+            display: none !important;
+          }
+        }
+      `}</style>
+      <nav
         style={{
-          maxWidth: '1100px',
-          margin: '0 auto',
-          padding: '0 40px',
-          height: '64px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          position: 'sticky',
+          top: 0,
+          zIndex: 50,
+          backgroundColor: 'var(--bg-alt)',
+          borderBottom: '1px solid var(--border)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          transition: 'all 0.3s ease',
         }}
       >
-        {/* Logo */}
-        <Link
-          to="/"
+        <div
+          className="nav-maxwidth"
           style={{
+            maxWidth: '1100px',
+            margin: '0 auto',
+            padding: '0 40px',
+            height: '64px',
             display: 'flex',
+            justifyContent: 'space-between',
             alignItems: 'center',
-            gap: '12px',
-            textDecoration: 'none',
-            transition: 'opacity 0.2s ease',
-            cursor: 'pointer',
           }}
-          onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
-          onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
         >
-          <div
+          {/* Logo */}
+          <Link
+            to="/"
             style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '6px',
-              backgroundColor: 'var(--accent)',
-              color: 'white',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 700,
-              fontSize: '14px',
+              gap: '12px',
+              textDecoration: 'none',
+              transition: 'opacity 0.2s ease',
+              cursor: 'pointer',
             }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
           >
-            SM
-          </div>
-          <span
-            style={{
-              color: 'var(--text-h)',
-              fontWeight: 600,
-              fontSize: '15px',
-              display: 'none',
-            }}
-            className="hidden md:inline"
-          >
-            Samuel
-          </span>
-        </Link>
-
-        {/* Desktop Menu */}
-        <div
-          style={{
-            display: 'flex',
-            gap: '8px',
-          }}
-        >
-          {navLinks.map(link => (
-            <Link
-              key={link.path}
-              to={link.path}
+            <div
               style={{
-                padding: '10px 16px',
+                width: '36px',
+                height: '36px',
                 borderRadius: '6px',
-                fontWeight: 500,
-                transition: 'all 0.2s ease',
+                backgroundColor: 'var(--accent)',
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: 700,
                 fontSize: '14px',
-                color: isActive(link.path) ? 'white' : 'var(--text)',
-                backgroundColor: isActive(link.path) ? 'var(--accent)' : 'transparent',
-                textDecoration: 'none',
-                cursor: 'pointer',
-              }}
-              onMouseEnter={e => {
-                if (!isActive(link.path)) {
-                  e.currentTarget.style.backgroundColor = 'var(--bg-secondary)';
-                  e.currentTarget.style.color = 'var(--text-h)';
-                }
-              }}
-              onMouseLeave={e => {
-                if (!isActive(link.path)) {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = 'var(--text)';
-                }
               }}
             >
-              {link.label}
-            </Link>
-          ))}
-        </div>
+              SM
+            </div>
+            <span
+              style={{
+                color: 'var(--text-h)',
+                fontWeight: 600,
+                fontSize: '15px',
+                display: 'none',
+              }}
+              className="hidden md:inline"
+            >
+              Samuel
+            </span>
+          </Link>
 
-        {/* Mobile Menu Button - Hidden on desktop via media query */}
-        <style>{`
-          @media (max-width: 767px) {
-            .mobile-menu-btn {
-              display: block !important;
-            }
-          }
-        `}</style>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="mobile-menu-btn"
-          style={{
-            display: 'none',
-            background: 'none',
-            border: 'none',
-            fontSize: '20px',
-            color: 'var(--text)',
-            cursor: 'pointer',
-            transition: 'color 0.2s ease',
-            padding: '8px',
-          }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'var(--text)')}
-        >
-          {isOpen ? <FaTimes /> : <FaBars />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div
-          style={{
-            display: 'block',
-            borderTop: '1px solid var(--border)',
-            backgroundColor: 'var(--bg)',
-            padding: '16px 40px',
-          }}
-        >
+          {/* Desktop Menu */}
           <div
+            className="nav-desktop"
             style={{
               display: 'flex',
-              flexDirection: 'column',
-              gap: '8px',
+              gap: '4px',
             }}
           >
             {navLinks.map(link => (
               <Link
                 key={link.path}
                 to={link.path}
-                onClick={() => setIsOpen(false)}
                 style={{
-                  display: 'block',
-                  padding: '12px 16px',
-                  borderRadius: '6px',
+                  padding: '8px 14px',
+                  borderRadius: '5px',
                   fontWeight: 500,
                   transition: 'all 0.2s ease',
+                  fontSize: '13px',
                   color: isActive(link.path) ? 'white' : 'var(--text)',
-                  backgroundColor: isActive(link.path) ? 'var(--accent)' : 'var(--bg-alt)',
+                  backgroundColor: isActive(link.path) ? 'var(--accent)' : 'transparent',
                   textDecoration: 'none',
                   cursor: 'pointer',
-                  fontSize: '14px',
+                  letterSpacing: '0.3px',
+                }}
+                onMouseEnter={e => {
+                  if (!isActive(link.path)) {
+                    e.currentTarget.style.backgroundColor = 'var(--bg-secondary)';
+                    e.currentTarget.style.color = 'var(--text-h)';
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (!isActive(link.path)) {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.color = 'var(--text)';
+                  }
                 }}
               >
                 {link.label}
               </Link>
             ))}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="mobile-menu-btn"
+            style={{
+              display: 'none',
+              background: 'none',
+              border: 'none',
+              fontSize: '20px',
+              color: 'var(--text)',
+              cursor: 'pointer',
+              transition: 'color 0.2s ease',
+              padding: '8px',
+            }}
+            onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text)')}
+          >
+            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
         </div>
-      )}
-    </nav>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div
+            className="nav-mobile"
+            style={{
+              display: 'block',
+              borderTop: '1px solid var(--border)',
+              backgroundColor: 'var(--bg)',
+              padding: '12px 20px',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '6px',
+              }}
+            >
+              {navLinks.map(link => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  style={{
+                    display: 'block',
+                    padding: '10px 12px',
+                    borderRadius: '5px',
+                    fontWeight: 500,
+                    transition: 'all 0.2s ease',
+                    color: isActive(link.path) ? 'white' : 'var(--text)',
+                    backgroundColor: isActive(link.path) ? 'var(--accent)' : 'transparent',
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                    fontSize: '13px',
+                  }}
+                  onMouseEnter={e => {
+                    if (!isActive(link.path)) {
+                      e.currentTarget.style.backgroundColor = 'var(--bg-secondary)';
+                    }
+                  }}
+                  onMouseLeave={e => {
+                    if (!isActive(link.path)) {
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                    }
+                  }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+    </>
   );
 }
