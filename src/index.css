@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Premium Light Mode */
+  --text: #5f6b7a;
+  --text-h: #1a1f2e;
+  --text-light: #8a92a2;
+  --text-muted: #b0b8c5;
+  --bg: #ffffff;
+  --bg-alt: #fafbfc;
+  --bg-secondary: #f3f5f8;
+  --border: #e8ecf1;
+  --accent: #1a73e8;
+  --accent-hover: #185abc;
+  --accent-light: #e8f0fe;
+  --success: #0d9488;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.1);
+
+  --sans: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --heading: 'Inter', system-ui, sans-serif;
+  --mono: 'Menlo', 'Consolas', monospace;
+
+  font: 16px/1.6 var(--sans);
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #cad2dd;
+    --text-h: #f6f8fb;
+    --text-light: #a8b0be;
+    --text-muted: #7d8591;
+    --bg: #0f1419;
+    --bg-alt: #1a1f29;
+    --bg-secondary: #252d38;
+    --border: #3a424f;
+    --accent: #5b9cf5;
+    --accent-hover: #7caef8;
+    --accent-light: #1e3a5f;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #f87171;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+}
+
+html {
+  font-family: var(--sans);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading);
+  margin: 0;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 72px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+}
+
+p {
+  margin: 0;
+  color: var(--text-light);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.5);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
