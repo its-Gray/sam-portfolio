@@ -7,6 +7,19 @@ export function Home() {
       {/* Hero Section - Premium and Minimal */}
       <section style={{ padding: '140px 40px 100px', maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ maxWidth: '700px' }}>
+          <p
+            style={{
+              fontSize: '15px',
+              fontWeight: 600,
+              color: 'var(--accent)',
+              marginBottom: '16px',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+            }}
+          >
+            Hi, I'm Samuel Mutembei
+          </p>
+
           <h1
             style={{
               fontSize: '56px',

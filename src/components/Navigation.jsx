@@ -87,32 +87,14 @@ export function Navigation() {
             onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
             onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
           >
-            <div
-              style={{
-                width: '36px',
-                height: '36px',
-                borderRadius: '6px',
-                backgroundColor: 'var(--accent)',
-                color: 'white',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 700,
-                fontSize: '14px',
-              }}
-            >
-              SM
-            </div>
             <span
               style={{
                 color: 'var(--text-h)',
-                fontWeight: 600,
+                fontWeight: 700,
                 fontSize: '15px',
-                display: 'none',
               }}
-              className="hidden md:inline"
             >
-              Samuel
+              Samuel Mutembei
             </span>
           </Link>
 
