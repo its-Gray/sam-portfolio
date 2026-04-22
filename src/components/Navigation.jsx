@@ -19,12 +19,21 @@ export function Navigation() {
   return (
     <>
       <style>{`
+        .nav-desktop {
+          display: flex;
+        }
+        .mobile-menu-btn {
+          display: none;
+        }
+        .nav-mobile {
+          display: none;
+        }
         @media (max-width: 768px) {
           .nav-desktop {
             display: none !important;
           }
-          .nav-padding {
-            padding: 0 20px !important;
+          .mobile-menu-btn {
+            display: block !important;
           }
           .nav-maxwidth {
             padding-left: 20px !important;
@@ -111,7 +120,6 @@ export function Navigation() {
           <div
             className="nav-desktop"
             style={{
-              display: 'flex',
               gap: '4px',
             }}
           >
@@ -154,7 +162,6 @@ export function Navigation() {
             onClick={() => setIsOpen(!isOpen)}
             className="mobile-menu-btn"
             style={{
-              display: 'none',
               background: 'none',
               border: 'none',
               fontSize: '20px',
@@ -173,7 +180,6 @@ export function Navigation() {
         {/* Mobile Menu */}
         {isOpen && (
           <div
-            className="nav-mobile"
             style={{
               display: 'block',
               borderTop: '1px solid var(--border)',
